@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 98%;
+}
+
+body {
+    padding-top: 3%;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.field-box {
+    position: relative;
+    border: 2px solid #d0d0d0;
+    margin: auto;
+    background-size: 35px;
+    background-image: url('../public/static/images/background.jpg');
+    background-repeat: repeat;
+}
+
+.field {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.field .wall {
+    background-image: url('../public/static/images/wall.jpg');
+}
+
+.field .enemy {
+    animation: vibing 4s linear infinite;
+}
+
+.field .enemy.linear.left {
+    background-image: url('../public/static/images/enemyLinearLeft.jpg');
+}
+
+.field .enemy.linear.right {
+    background-image: url('../public/static/images/enemyLinearRight.jpg');
+}
+
+.field .enemy.random.left {
+    background-image: url('../public/static/images/enemyRandomLeft.jpg');
+}
+
+.field .enemy.random.right {
+    background-image: url('../public/static/images/enemyRandomRight.jpg');
+}
+
+.field .enemy.hunter.left {
+    background-image: url('../public/static/images/enemyHunterLeft.jpg');
+}
+
+.field .enemy.hunter.right {
+    background-image: url('../public/static/images/enemyHunterRight.jpg');
+}
+
+.field .player {
+    animation: breathing 4s linear infinite;
+}
+
+.field .player.right {
+    background-image: url('../public/static/images/playerRight.jpg');
+}
+
+.field .player.left {
+    background-image: url('../public/static/images/playerLeft.jpg');
+}
+
+.field .potion {
+    background-image: url('../public/static/images/potion.jpg');
+    background-size: 65%;
+    animation: pulse 2s linear infinite;
+}
+
+.field .sword {
+    background-image: url('../public/static/images/sword.jpg');
+    background-size: 90%;
+    animation: pulse 4s linear infinite;
+}
+
+.enemy.health {
+    background-color: #ff0000;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 3px;
+}
+
+.player.health {
+    background-color: #00ff00;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 3px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(.95) rotate(5deg);
+    }
+
+    25% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(.95) rotate(-5deg);
+    }
+
+    75% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    100% {
+        transform: scale(.95) rotate(5deg);
+    }
+}
+
+@keyframes vibing {
+    0% {
+        transform: scale(.95) skewY(5deg);
+    }
+
+    25% {
+        transform: scale(1) skewY(0deg);
+    }
+
+    50% {
+        transform: scale(.95) skewY(-5deg);
+    }
+
+    75% {
+        transform: scale(1) skewY(0deg);
+    }
+
+    100% {
+        transform: scale(.95) skewY(5deg);
+    }
+}
+
+@keyframes breathing {
+    0% {
+        transform: scale(.95);
+    }
+
+    25% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(.95);
+    }
+
+    75% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.95);
+    }
+}
