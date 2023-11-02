@@ -16,7 +16,7 @@ function Enum(object) {
 // СЛУЧАЙНО: 2
 // ОХОТНИК: 3 (преследование игрока)
 // НЕИЗВЕСТНО: -1
-export const EnemyMoveType = Enum({
+const EnemyMoveType = Enum({
   HORIZONTAL: 0,
   VERTICAL: 1,
   RANDOM: 2,
@@ -25,7 +25,7 @@ export const EnemyMoveType = Enum({
 });
 
 // Преобразует целочисленное значение к типу движения противника
-export const getEnemyMoveType = (moveType) => {
+const getEnemyMoveType = (moveType) => {
   switch (moveType) {
     case 0:
       return EnemyMoveType.HORIZONTAL;
@@ -39,5 +39,3 @@ export const getEnemyMoveType = (moveType) => {
       return EnemyMoveType.UNKNOWN;
   }
 };
-
-export default EnemyMoveType;

@@ -1,17 +1,19 @@
-import { getRandomIntInRange } from "./staticFunctions.js";
-import { getEnemyMoveType } from "./EnemyMoveType.js";
-
 // Возвращает массив пустых ячеек
 //
 // Аргументы {
-//    map - карта
+//    matrix - матрица
+//    width - ширина матрицы
+//    height - высота матрицы
 // }
-const getFreeCells = (map) => {
+// Возвращаемое значение {
+//    freeCells - список пустых ячеек
+// }
+const getFreeCells = (matrix, width, height) => {
   let freeCells = [];
 
-  for (let i = 0; i < map.height; i += 1) {
-    for (let j = 0; j < map.width; j += 1) {
-      if (map.gameZone[i][j] === true) {
+  for (let i = 0; i < height; i += 1) {
+    for (let j = 0; j < width; j += 1) {
+      if (matrix[i][j] === true) {
         const resultItem = { i, j };
         freeCells.push(resultItem);
       }
@@ -158,6 +160,88 @@ const generateWays = (map, minWaysCount, maxWaysCount, borders) => {
   }
 };
 
+// Создает шаги для волнового алгоритма
+//
+// Аргументы {
+//    matrix - матрица
+//    index - текущий индекс строки
+//    jndex - текущий индекс столбца
+//    list - список для заполнения
+//    width - ширина матрицы
+//    height - высота матрицы
+// }
+const collectSteps = (matrix, width, height, index, jndex, list) => {
+  if (index + 1 < height) {
+    if (matrix[index + 1][jndex]) {
+      list.push({ i: index + 1, j: jndex });
+      matrix[index + 1][jndex] = false;
+    }
+  }
+  if (jndex + 1 < width) {
+    if (matrix[index][jndex + 1]) {
+      list.push({ i: index, j: jndex + 1 });
+      matrix[index][jndex + 1] = false;
+    }
+  }
+  if (index - 1 >= 0) {
+    if (matrix[index - 1][jndex]) {
+      list.push({ i: index - 1, j: jndex });
+      matrix[index - 1][jndex] = false;
+    }
+  }
+  if (jndex - 1 >= 0) {
+    if (matrix[index][jndex - 1]) {
+      list.push({ i: index, j: jndex - 1 });
+      matrix[index][jndex - 1] = false;
+    }
+  }
+  matrix[index][jndex] = false;
+};
+
+// Проверяет сгенерированную карту на наличие недостижимых зон
+//
+// Аргументы {
+//    map - карта
+// }
+//
+// Возвращаемое значение {
+//    true/false - есть ли пустоты в сгенерированной карте
+// }
+const isMapHaveEmptySpaces = (map) => {
+  const width = map.width;
+  const height = map.height;
+
+  let matrix = Array(map.height)
+    .fill()
+    .map(() => Array(map.width).fill(false));
+
+  for (let i = 0; i < map.height; i += 1) {
+    for (let j = 0; j < map.width; j += 1) {
+      matrix[i][j] = map.gameZone[i][j];
+    }
+  }
+
+  const anyFreeCell = getFreeCells(map.gameZone, width, height)[0];
+  const firstStep_i = anyFreeCell.i;
+  const firstStep_j = anyFreeCell.j;
+  let moves = [];
+  collectSteps(matrix, width, height, firstStep_i, firstStep_j, moves);
+
+  while (moves.length != 0) {
+    let newMoves = [];
+    for (let i = 0; i < moves.length; i += 1) {
+      const move = moves[i];
+      const index = move.i;
+      const jndex = move.j;
+
+      collectSteps(matrix, width, height, index, jndex, newMoves);
+    }
+    moves = newMoves;
+  }
+
+  return getFreeCells(matrix, width, height).length !== 0;
+};
+
 // Размещает на карте объекты указанного количества
 //
 // Аргументы {
@@ -172,7 +256,7 @@ const spawn = (map, count) => {
   let items = [];
 
   for (let i = 0; i < count; i += 1) {
-    const freeCells = getFreeCells(map);
+    const freeCells = getFreeCells(map.gameZone, map.width, map.height);
     const randomIndex = getRandomIntInRange(0, freeCells.length - 1);
     const item = freeCells[randomIndex];
     items.push(item);
@@ -228,19 +312,22 @@ const modifyEnemies = (enemies) => {
 //        swords - список сгенерированных мечей
 //        potions - список сгенерированных зелий
 //        player - игрок
-//        enemies - список противников 
+//        enemies - список противников
 //    }
 // }
 const gameGenerator = (initData) => {
-  const map = createGameZone(initData.width, initData.height);
-  const borders = generateRooms(
-    map,
-    initData.minRoomCount,
-    initData.maxRoomCount,
-    initData.minRoomSize,
-    initData.maxRoomSize
-  );
-  generateWays(map, initData.minWaysCount, initData.maxWaysCount, borders);
+  let map = [[]];
+  do {
+    map = createGameZone(initData.width, initData.height);
+    const borders = generateRooms(
+      map,
+      initData.minRoomCount,
+      initData.maxRoomCount,
+      initData.minRoomSize,
+      initData.maxRoomSize
+    );
+    generateWays(map, initData.minWaysCount, initData.maxWaysCount, borders);
+  } while (isMapHaveEmptySpaces(map));
 
   const swords = spawn(map, initData.swordCount);
   const potions = spawn(map, initData.potionCount);
@@ -258,5 +345,3 @@ const gameGenerator = (initData) => {
   const gameData = { map, swords, potions, player: player[0], enemies };
   return gameData;
 };
-
-export default gameGenerator;

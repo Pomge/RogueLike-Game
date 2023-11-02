@@ -16,7 +16,7 @@ function Enum(object) {
 // ВНИЗ: 2
 // ВЛЕВО: 3
 // НЕИЗВЕСТНО: -1
-export const Directions = Enum({
+const Directions = Enum({
   UP: 0,
   RIGHT: 1,
   DOWN: 2,
@@ -25,7 +25,7 @@ export const Directions = Enum({
 });
 
 // Возвращает код напрвления по изменению координат
-export const getDirectionCode = (indexDiff, jndexDiff) => {
+const getDirectionCode = (indexDiff, jndexDiff) => {
   if (indexDiff === -1 && jndexDiff === 0) {
     return Directions.UP;
   }
@@ -42,7 +42,7 @@ export const getDirectionCode = (indexDiff, jndexDiff) => {
 };
 
 // Возвращает координаты по коду направления
-export const getIndexJndex = (direction) => {
+const getIndexJndex = (direction) => {
   switch (direction) {
     case Directions.UP:
       return { indexDiff: -1, jndexDiff: 0 };

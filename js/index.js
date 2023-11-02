@@ -1,9 +1,3 @@
-import { isContains } from "./staticFunctions.js";
-import { Directions } from "./Direction.js";
-import { EnemyMoveType } from "./EnemyMoveType.js";
-import gameGenerator from "./gameGenerator.js";
-import gameStep from "./gameStep.js";
-
 // Хранит игровые данные
 var gameData = {};
 
@@ -191,31 +185,8 @@ document.addEventListener("keypress", (event) => {
 });
 
 // Функция-инициализатор
-window.onload = () => {
-  fetch("../public/static/settings.json")
-    .then((response) => response.json())
-    .then((json) => {
-      const initData = {
-        width: json.width,
-        height: json.height,
-        minRoomCount: json.minRoomCount,
-        maxRoomCount: json.maxRoomCount,
-        minRoomSize: json.minRoomSize,
-        maxRoomSize: json.maxRoomSize,
-        minWaysCount: json.minWaysCount,
-        maxWaysCount: json.maxWaysCount,
-        swordCount: json.swordCount,
-        swordBuff: json.swordBuff,
-        potionCount: json.potionCount,
-        potionBuff: json.potionBuff,
-        playerPower: json.playerPower,
-        playerHealth: json.playerHealth,
-        enemyHealth: json.enemyHealth,
-        enemyPower: json.enemyPower,
-        enemyCount: json.enemyCount,
-      };
-
-      gameData = gameGenerator(initData);
-      draw();
-    });
-};
+window.addEventListener("load", (event) => {
+  const initData = InitData;
+  gameData = gameGenerator(initData);
+  draw();
+});

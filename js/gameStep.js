@@ -1,11 +1,3 @@
-import {
-  isContains,
-  getRandomIntInRange,
-  mapTeleport,
-} from "./staticFunctions.js";
-import { Directions, getDirectionCode, getIndexJndex } from "./Direction.js";
-import { EnemyMoveType } from "./EnemyMoveType.js";
-
 // Просчитывает аттаки на текущем шаге
 //
 // Аргументы {
@@ -305,7 +297,7 @@ const moveEntity = (map, direction, entity, isPlayer, swords, potions) => {
 };
 
 // Игровой шаг
-// 
+//
 // Аргументы {
 //    gameData - игровые данные
 // }
@@ -334,4 +326,3 @@ const gameStep = (gameData) => {
     gameData.isPlayerAttacking
   );
 };
-export default gameStep;
