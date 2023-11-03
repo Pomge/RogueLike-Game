@@ -186,7 +186,6 @@ document.addEventListener("keypress", (event) => {
 
 // Функция-инициализатор
 window.addEventListener("load", (event) => {
-  console.log("a");
   const initData = Settings;
   gameData = gameGenerator(initData);
   draw();
