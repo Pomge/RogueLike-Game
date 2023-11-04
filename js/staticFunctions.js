@@ -29,3 +29,17 @@ const mapTeleport = (index, size) => {
 
   return index;
 };
+
+// Копирует матрицу игровой зоны в 'matrix' и возвращает ее
+const copyGameZone = (map) => {
+  let matrix = Array(map.height)
+    .fill()
+    .map(() => Array(map.width).fill(false));
+
+  for (let i = 0; i < map.height; i += 1) {
+    for (let j = 0; j < map.width; j += 1) {
+      matrix[i][j] = map.gameZone[i][j];
+    }
+  }
+  return matrix;
+};

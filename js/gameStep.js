@@ -122,16 +122,7 @@ const randomStep = (map, enemy) => {
 const hunterStep = (map, enemy, player) => {
   let queue = [];
 
-  let matrix = Array(map.height)
-    .fill()
-    .map(() => Array(map.width).fill(false));
-
-  for (let i = 0; i < map.height; i += 1) {
-    for (let j = 0; j < map.width; j += 1) {
-      matrix[i][j] = map.gameZone[i][j];
-    }
-  }
-
+  let matrix = copyGameZone(map);
   matrix[enemy.i][enemy.j] = false;
   queue.push([{ i: enemy.i, j: enemy.j }]);
 
