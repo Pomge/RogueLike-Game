@@ -27,28 +27,27 @@ const getFreeCells = (matrix, width, height) => {
 //
 // Аргументы {
 //    matrix - матрица
-//    width - ширина матрицы
-//    height - высота матрицы
 //    borders - границы
 // }
 // Возвращаемое значение {
 //    freeCells - список пустых ячеек
 // }
-const getFreeCellsWithBorders = (matrix, width, height, borders) => {
+const getFreeCellsByBorders = (matrix, borders) => {
   let freeCells = [];
 
-  for (let i = 0; i < height; i += 1) {
-    for (let j = 0; j < width; j += 1) {
-      if (
-        i >= borders.minVerticalBorder &&
-        i <= borders.maxVerticalBorder &&
-        j >= borders.minHorizontalBorder &&
-        j <= borders.maxHorizontalBorder
-      ) {
-        if (matrix[i][j] === true) {
-          const resultItem = { i, j };
-          freeCells.push(resultItem);
-        }
+  for (
+    let i = borders.minVerticalBorder;
+    i <= borders.maxVerticalBorder;
+    i += 1
+  ) {
+    for (
+      let j = borders.minHorizontalBorder;
+      j <= borders.maxHorizontalBorder;
+      j += 1
+    ) {
+      if (matrix[i][j] === true) {
+        const resultItem = { i, j };
+        freeCells.push(resultItem);
       }
     }
   }
@@ -245,12 +244,7 @@ const isMapHaveEmptySpaces = (map, borders) => {
   const height = map.height;
 
   let matrix = copyGameZone(map);
-  const freeCells = getFreeCellsWithBorders(
-    map.gameZone,
-    width,
-    height,
-    borders
-  );
+  const freeCells = getFreeCellsByBorders(map.gameZone, borders);
   const anyFreeCell = freeCells[Math.ceil(freeCells.length / 2)];
   const firstStep_i = anyFreeCell.i;
   const firstStep_j = anyFreeCell.j;
