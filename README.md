@@ -51,7 +51,7 @@ RogueLike-Game on JavaScript using jQuery
 Управление перемещением по карте - WASD, SPACE - атака в радиусе 1 квадрата.
 
 # Настройки
-Для настроек игры используейте [файл настроек игры](https://github.com/Pomge/RogueLike-Game/blob/main/js/InitData.js).
+Для настроек игры используейте [файл настроек игры](https://github.com/Pomge/RogueLike-Game/blob/main/js/Settings.js).
 
 `width` - ширина игрового поля <br/>
 `height` - высота игрового поля <br/>
