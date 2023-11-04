@@ -1,24 +1,25 @@
 // Хранит игровые данные
 var gameData = {};
+let multiplier = 35;
 
 // "Рисует" объект - стена
 // Возвращает модифицированную ячейку
 const drawWall = (cell) => {
-  cell.attr("class", "field wall");
+  cell.addClass("wall");
   return cell;
 };
 
 // "Рисует" объект - меч
 // Возвращает модифицированную ячейку
 const drawSword = (cell) => {
-  cell.attr("class", "field sword");
+  cell.addClass("sword");
   return cell;
 };
 
 // "Рисует" объект - зелье
 // Возвращает модифицированную ячейку
 const drawPotion = (cell) => {
-  cell.attr("class", "field potion");
+  cell.addClass("potion");
   return cell;
 };
 
@@ -42,7 +43,7 @@ const drawHealthBar = (entity, cell, isPlayer) => {
 // Возвращает модифицированную ячейку
 const drawPlayer = (cell) => {
   const player = gameData.player;
-  cell.attr("class", "field player");
+  cell.addClass("player");
 
   if (player.horizontalSpeed > 0) {
     cell.addClass("right");
@@ -58,7 +59,7 @@ const drawPlayer = (cell) => {
 // "Рисует" объект - противник
 // Возвращает модифицированную ячейку
 const drawEnemy = (cell, enemy) => {
-  cell.attr("class", "field enemy");
+  cell.addClass("enemy");
 
   switch (enemy.moveType) {
     case EnemyMoveType.HORIZONTAL:
@@ -87,23 +88,14 @@ const drawEnemy = (cell, enemy) => {
 // Функция отрисовки игрового поля
 const draw = () => {
   const field = $(".field");
-  const fieldWidth = field.width();
-  const fieldHeight = field.height();
-
-  const fieldBox = $(".field-box");
-  const mapWidth = gameData.map.width;
-  const mapHeight = gameData.map.height;
-  fieldBox.width(fieldWidth * mapWidth).height(fieldHeight * mapHeight);
-  fieldBox.css(
-    "background-size:",
-    fieldWidth < fieldHeight ? fieldWidth : fieldHeight + "px"
-  );
-
   const map = gameData.map;
+
   for (let i = 0; i < map.height; i += 1) {
     for (let j = 0; j < map.width; j += 1) {
       const cell = $("<div></div>");
-      cell.offset({ top: fieldHeight * i, left: fieldWidth * j });
+      cell.attr("class", "field");
+      cell.width(multiplier).height(multiplier);
+      cell.offset({ top: multiplier * i, left: multiplier * j });
 
       if (!map.gameZone[i][j]) {
         const swords = gameData.swords;
@@ -184,9 +176,29 @@ document.addEventListener("keypress", (event) => {
   update();
 });
 
+// Изменение размеров окна
+window.addEventListener("resize", (event) => {
+  const pageWidth = $(window).width();
+  const pageHeight = $(window).height();
+
+  multiplier = Math.ceil(
+    Math.min(pageWidth / gameData.map.width, pageHeight / gameData.map.height) *
+      0.95
+  );
+
+  const fieldBox = $(".field-box");
+  const mapWidth = gameData.map.width;
+  const mapHeight = gameData.map.height;
+  fieldBox.width(multiplier * mapWidth).height(multiplier * mapHeight);
+  fieldBox.css("background-size", `${multiplier}px`);
+
+  $(".field").empty();
+  draw();
+});
+
 // Функция-инициализатор
 window.addEventListener("load", (event) => {
   const initData = Settings;
   gameData = gameGenerator(initData);
-  draw();
+  window.dispatchEvent(new Event("resize"));
 });
