@@ -36,6 +36,11 @@ const drawHealthBar = (entity, cell, isPlayer) => {
   const className = isPlayer ? "player" : "enemy";
   healthBar.attr("class", className + " health");
   healthBar.css("width", health + "%");
+
+  const healthPoint = $(`<p>${entity.health} HP</p>`);
+  healthPoint.attr("class", "healthPoint");
+
+  cell.append(healthPoint);
   cell.append(healthBar);
 };
 

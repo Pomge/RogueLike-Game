@@ -94,6 +94,17 @@ body {
     height: 3px;
 }
 
+.healthPoint {
+    width: 100%;
+    font-size: 0.7em;
+    font-style: italic;
+    text-align: center;
+    color: #CDCDCD;
+    user-select: none;
+    position: absolute;
+    top: -1em;
+}
+
 .player.health {
     background-color: #00ff00;
     position: absolute;
