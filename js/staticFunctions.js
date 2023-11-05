@@ -2,12 +2,10 @@
 // если элемент имеет 'i' и 'j' равные переданным в функцию,
 // иначе возвращает -1
 const isContains = (i, j, array) => {
-  for (let index = 0; index < array.length; index += 1) {
-    if (array[index].i === i && array[index].j === j) {
-      return index;
-    }
-  }
-  return -1;
+  const index = array.findIndex(
+    (element) => element.i === i && element.j === j
+  );
+  return index;
 };
 
 // Возвращает случайное целочисленное число в диапазоне ['min', 'max']
