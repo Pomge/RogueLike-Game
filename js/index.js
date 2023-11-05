@@ -132,9 +132,10 @@ const isGameOver = () => {
   const enemies = gameData.enemies;
   if (enemies.length === 0 || player.health <= 0) {
     const status = enemies.length === 0 ? "Win" : "Lose";
-    if (confirm("Game Over: " + status) ? true : true) {
+    setTimeout(function () {
+      confirm("Game Over: " + status);
       window.location.reload();
-    }
+    }, 1);
   }
 };
 
