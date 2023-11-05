@@ -15,5 +15,5 @@ const Settings = {
   playerHealth: 10,
   enemyHealth: 4,
   enemyPower: 1,
-  enemyCount: 1,
+  enemyCount: 10,
 };
