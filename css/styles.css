@@ -19,7 +19,11 @@ body {
     border: 2px solid #d0d0d0;
     margin: auto;
     background-size: 100%;
-    background-image: url('../public/static/images/background.jpg');
+    background-image: image-set(
+        "../public/static/images/webp/background.webp" type("image/webp"),
+        "../public/static/images/jpeg/background.jpg" type("image/jpeg"),
+        "../public/static/images/png/background.png" type("image/png")
+    );
     background-repeat: repeat;
 }
 
@@ -30,8 +34,8 @@ body {
     background-position: center center;
 }
 
-.field .wall {
-    background-image: url('../public/static/images/wall.jpg');
+.field .player {
+    animation: breathing 4s linear infinite;
 }
 
 .field .enemy {
@@ -42,50 +46,95 @@ body {
     box-shadow: 0px 0px 10px 2px #ff4e33;
 }
 
+.field .wall {
+    background-image: image-set(
+        "../public/static/images/webp/wall.webp" type("image/webp"),
+        "../public/static/images/jpeg/wall.jpg" type("image/jpeg"),
+        "../public/static/images/png/wall.png" type("image/png")
+    );
+}
+
 .field .enemy.linear.left {
-    background-image: url('../public/static/images/enemyLinearLeft.jpg');
+    background-image: image-set(
+        "../public/static/images/webp/enemyLinearLeft.webp" type("image/webp"),
+        "../public/static/images/jpeg/enemyLinearLeft.jpg" type("image/jpeg"),
+        "../public/static/images/png/enemyLinearLeft.png" type("image/png")
+    );
 }
 
 .field .enemy.linear.right {
-    background-image: url('../public/static/images/enemyLinearRight.jpg');
+        background-image: image-set(
+        "../public/static/images/webp/enemyLinearRight.webp" type("image/webp"),
+        "../public/static/images/jpeg/enemyLinearRight.jpg" type("image/jpeg"),
+        "../public/static/images/png/enemyLinearRight.png" type("image/png")
+    );
 }
 
 .field .enemy.random.left {
-    background-image: url('../public/static/images/enemyRandomLeft.jpg');
+        background-image: image-set(
+        "../public/static/images/webp/enemyRandomLeft.webp" type("image/webp"),
+        "../public/static/images/jpeg/enemyRandomLeft.jpg" type("image/jpeg"),
+        "../public/static/images/png/enemyRandomLeft.png" type("image/png")
+    );
 }
 
 .field .enemy.random.right {
-    background-image: url('../public/static/images/enemyRandomRight.jpg');
+        background-image: image-set(
+        "../public/static/images/webp/enemyRandomRight.webp" type("image/webp"),
+        "../public/static/images/jpeg/enemyRandomRight.jpg" type("image/jpeg"),
+        "../public/static/images/png/enemyRandomRight.png" type("image/png")
+    );
 }
 
 .field .enemy.hunter.left {
-    background-image: url('../public/static/images/enemyHunterLeft.jpg');
+        background-image: image-set(
+        "../public/static/images/webp/enemyHunterLeft.webp" type("image/webp"),
+        "../public/static/images/jpeg/enemyHunterLeft.jpg" type("image/jpeg"),
+        "../public/static/images/png/enemyHunterLeft.png" type("image/png")
+    );
 }
 
 .field .enemy.hunter.right {
-    background-image: url('../public/static/images/enemyHunterRight.jpg');
+        background-image: image-set(
+        "../public/static/images/webp/enemyHunterRight.webp" type("image/webp"),
+        "../public/static/images/jpeg/enemyHunterRight.jpg" type("image/jpeg"),
+        "../public/static/images/png/enemyHunterRight.png" type("image/png")
+    );
 }
 
-.field .player {
-    animation: breathing 4s linear infinite;
-}
 
 .field .player.right {
-    background-image: url('../public/static/images/playerRight.jpg');
+        background-image: image-set(
+        "../public/static/images/webp/playerRight.webp" type("image/webp"),
+        "../public/static/images/jpeg/playerRight.jpg" type("image/jpeg"),
+        "../public/static/images/png/playerRight.png" type("image/png")
+    );
 }
 
 .field .player.left {
-    background-image: url('../public/static/images/playerLeft.jpg');
+        background-image: image-set(
+        "../public/static/images/webp/playerLeft.webp" type("image/webp"),
+        "../public/static/images/jpeg/playerLeft.jpg" type("image/jpeg"),
+        "../public/static/images/png/playerLeft.png" type("image/png")
+    );
 }
 
 .field .potion {
-    background-image: url('../public/static/images/potion.jpg');
+        background-image: image-set(
+        "../public/static/images/webp/potion.webp" type("image/webp"),
+        "../public/static/images/jpeg/potion.jpg" type("image/jpeg"),
+        "../public/static/images/png/potion.png" type("image/png")
+    );
     background-size: 65%;
     animation: pulse 2s linear infinite;
 }
 
 .field .sword {
-    background-image: url('../public/static/images/sword.jpg');
+        background-image: image-set(
+        "../public/static/images/webp/sword.webp" type("image/webp"),
+        "../public/static/images/jpeg/sword.jpg" type("image/jpeg"),
+        "../public/static/images/png/sword.png" type("image/png")
+    );
     background-size: 90%;
     animation: pulse 4s linear infinite;
 }
