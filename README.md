@@ -5,9 +5,9 @@
 Пошаговая игра "РОГАЛИК", написанная на JavaScript с использованием jQuery.
 
 # Скриншоты
-![1](https://github.com/Pomge/RogueLike-Game/assets/33260275/c242a766-e74c-43ee-8544-b656a86f1d3b)
-![2](https://github.com/Pomge/RogueLike-Game/assets/33260275/f9e44935-7ad2-4fc9-aa60-a390652f6697)
-![3](https://github.com/Pomge/RogueLike-Game/assets/33260275/0d080ed8-54d6-45c3-a5ac-4a1be7d74075)
+![1](https://github.com/Pomge/RogueLike-Game/assets/33260275/db6508cf-7cfb-45ad-8dd3-37a35eae848a)
+![2](https://github.com/Pomge/RogueLike-Game/assets/33260275/3ca4102b-03e3-4ec9-b83c-d9b7f5cd32fd)
+![3](https://github.com/Pomge/RogueLike-Game/assets/33260275/8fbaa7bd-1a71-4936-8e6e-34e9dc91293a)
 
 # Враги
 Атакуют игрока каждый раз, когда он приближается на расстояние равное радиусу 1 квадрата.
