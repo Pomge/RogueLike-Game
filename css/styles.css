@@ -110,36 +110,30 @@ body {
     animation: pulse 4s linear infinite;
 }
 
+.player.health {
+    background-color: #00ff00;
+    height: 3px;
+}
+
 .enemy.health {
     background-color: #ff0000;
-    position: absolute;
-    left: 0px;
-    top: 0px;
     height: 3px;
 }
 
 .healthPoint {
     width: 100%;
-    font-size: 0.7em;
+    font-size: 12px;
     font-style: italic;
     text-align: center;
-    text-shadow:
-        1px 0 1px #000000,
-        0 1px 1px #000000,
-        -1px 0 1px #000000,
-        0 -1px 1px #000000;
     color: #CDCDCD;
+    text-shadow:
+        1px 0 0px #000000,
+        0 1px 0px #000000,
+        -1px 0 0px #000000,
+        0 -1px 0px #000000;
     user-select: none;
     position: absolute;
-    top: -1em;
-}
-
-.player.health {
-    background-color: #00ff00;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    height: 3px;
+    top: -12px;
 }
 
 @keyframes pulse {
