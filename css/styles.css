@@ -7,6 +7,12 @@ body {
     background-color: #000000;
 }
 
+@media only screen and (orientation: portrait) {
+    body {
+        transform: rotate(90deg);
+    }
+}
+
 .field-box {
     position: relative;
     border: 2px solid #d0d0d0;

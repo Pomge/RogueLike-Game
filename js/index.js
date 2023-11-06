@@ -187,17 +187,21 @@ document.addEventListener("keypress", (event) => {
 
 // Изменение размеров окна
 window.addEventListener("resize", (event) => {
-  const pageWidth = $(window).width();
-  const pageHeight = $(window).height();
+  const windowWidth = $(window).width();
+  const windowHeight = $(window).height();
+
+  const pageWidth = Math.max(windowWidth, windowHeight);
+  const pageHeight = Math.min(windowWidth, windowHeight);
+
+  const mapWidth = gameData.map.width;
+  const mapHeight = gameData.map.height;
 
   multiplier = Math.ceil(
-    Math.min(pageWidth / gameData.map.width, pageHeight / gameData.map.height) *
-      0.95
+    Math.min(pageWidth / mapWidth, pageHeight / mapHeight) * 0.95
   );
 
   const fieldBox = $(".field-box");
-  const mapWidth = gameData.map.width;
-  const mapHeight = gameData.map.height;
+
   fieldBox.width(multiplier * mapWidth).height(multiplier * mapHeight);
   fieldBox.css("background-size", `${multiplier}px`);
 
