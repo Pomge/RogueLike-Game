@@ -38,6 +38,10 @@ body {
     animation: vibing 4s linear infinite;
 }
 
+.attack {
+    box-shadow: 0px 0px 10px 2px #ff4e33;
+}
+
 .field .enemy.linear.left {
     background-image: url('../public/static/images/enemyLinearLeft.jpg');
 }

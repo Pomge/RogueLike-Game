@@ -16,10 +16,11 @@ const calculateAttacks = (map, player, enemies, isPlayerAttacking) => {
     const enemy_i = enemy.i;
     const enemy_j = enemy.j;
 
-    if (
-      Math.abs(enemy_i - player_i) <= 1 &&
-      Math.abs(enemy_j - player_j) <= 1
-    ) {
+    const isEnemyAttacking =
+      Math.abs(enemy_i - player_i) <= 1 && Math.abs(enemy_j - player_j) <= 1;
+    enemy.isAttacking = isEnemyAttacking;
+
+    if (isEnemyAttacking) {
       let isEnemyAlive = true;
       if (isPlayerAttacking) {
         enemy.health -= player.power;

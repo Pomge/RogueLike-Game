@@ -86,6 +86,9 @@ const drawEnemy = (cell, enemy) => {
   }
 
   drawHealthBar(enemy, cell, false);
+  if (enemy.isAttacking) {
+    cell.addClass("attack");
+  }
 
   return cell;
 };
@@ -140,7 +143,7 @@ const isGameOver = () => {
     setTimeout(function () {
       confirm("Game Over: " + status);
       window.location.reload();
-    }, 1);
+    }, 0);
   }
 };
 
