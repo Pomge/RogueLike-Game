@@ -187,11 +187,8 @@ document.addEventListener("keypress", (event) => {
 
 // Изменение размеров окна
 window.addEventListener("resize", (event) => {
-  const windowWidth = $(window).width();
-  const windowHeight = $(window).height();
-
-  const pageWidth = Math.max(windowWidth, windowHeight);
-  const pageHeight = Math.min(windowWidth, windowHeight);
+  const pageWidth = $(window).width();
+  const pageHeight = $(window).height();
 
   const mapWidth = gameData.map.width;
   const mapHeight = gameData.map.height;
