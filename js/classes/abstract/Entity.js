@@ -8,7 +8,7 @@ function Entity(i, j, health, power) {
 
 Entity.prototype.__proto__ = Tile.prototype;
 
-Entity.prototype.drawEntity = function (cell) {
+Entity.prototype.draw = function (cell) {
   this.mirrorFlip(cell);
 };
 

@@ -6,7 +6,7 @@ function LinearEnemy(i, j, health, power, moveType) {
 LinearEnemy.prototype.__proto__ = Enemy.prototype;
 
 LinearEnemy.prototype.draw = function (cell) {
-  this.drawEnemy(cell);
+  this.__proto__.__proto__.draw.call(this, cell);
   cell.addClass("linear");
 };
 

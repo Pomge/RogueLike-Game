@@ -28,7 +28,7 @@ Player.prototype.drawHealthBar = function (cell) {
 };
 
 Player.prototype.draw = function (cell) {
+  this.__proto__.__proto__.draw.call(this, cell);
   cell.addClass("player");
-  this.drawEntity(cell);
   this.drawHealthBar(cell);
 };

@@ -5,7 +5,7 @@ function HunterEnemy(i, j, health, power, moveType) {
 HunterEnemy.prototype.__proto__ = Enemy.prototype;
 
 HunterEnemy.prototype.draw = function (cell) {
-  this.drawEnemy(cell);
+  this.__proto__.__proto__.draw.call(this, cell);
   cell.addClass("hunter");
 };
 

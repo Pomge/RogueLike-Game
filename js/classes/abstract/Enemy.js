@@ -6,9 +6,9 @@ function Enemy(i, j, health, power, moveType) {
 
 Enemy.prototype.__proto__ = Entity.prototype;
 
-Enemy.prototype.drawEnemy = function (cell) {
+Enemy.prototype.draw = function (cell) {
+  this.__proto__.__proto__.__proto__.draw.call(this, cell);
   cell.addClass("enemy");
-  this.drawEntity(cell);
   this.drawHealthBar(cell);
 
   if (this.isAttacking) {

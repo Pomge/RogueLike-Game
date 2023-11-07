@@ -5,7 +5,7 @@ function RandomEnemy(i, j, health, power, moveType) {
 RandomEnemy.prototype.__proto__ = Enemy.prototype;
 
 RandomEnemy.prototype.draw = function (cell) {
-  this.drawEnemy(cell);
+  this.__proto__.__proto__.draw.call(this, cell);
   cell.addClass("random");
 };
 
