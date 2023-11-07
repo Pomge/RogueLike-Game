@@ -50,6 +50,9 @@
 
 Управление перемещением по карте - WASD, SPACE - атака в радиусе 1 квадрата.
 
+# Диаграмма классов
+![ClassDiagram](https://github.com/Pomge/RogueLike-Game/assets/33260275/4f24432c-6700-441c-a5c6-7cb82cb64fed)
+
 # Настройки
 Для настроек игры используейте [файл настроек игры](https://github.com/Pomge/RogueLike-Game/blob/main/js/Settings.js).
 
