@@ -95,9 +95,9 @@ window.addEventListener("resize", (event) => {
 const registerServiceWorker = async () => {
   if ("serviceWorker" in navigator) {
     try {
-      const registration = await navigator.serviceWorker.register(
-        "/serviceWorker.js"
-      );
+      await navigator.serviceWorker.register("/serviceWorker.js", {
+        scope: "/",
+      });
     } catch (error) {
       console.error(`Service Worker registration failed with ${error}`);
     }
