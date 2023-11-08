@@ -69,6 +69,7 @@ async function addResourcesToCache(resources) {
 }
 
 async function cacheFirst(request) {
+  console.log(request);
   console.log(request.url);
   const cached = await caches.match(request);
   return cached ?? (await fetch(request));
