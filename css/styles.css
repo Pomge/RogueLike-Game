@@ -123,7 +123,7 @@ body {
 }
 
 .healthPoint {
-    display: none;
+    visibility: hidden;
     width: 100%;
     font-size: 12px;
     font-style: italic;
@@ -140,7 +140,7 @@ body {
 }
 
 .player:hover .healthPoint, .enemy:hover .healthPoint {
-    display: block;
+    visibility: visible;
 }
 
 @keyframes pulse {
