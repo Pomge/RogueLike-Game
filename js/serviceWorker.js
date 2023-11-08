@@ -79,7 +79,9 @@ self.addEventListener("activate", async (event) => {
     cacheNames
       .filter((cacheName) => cacheName !== staticCacheName)
       .map((cacheName) => caches.delete(cacheName))
-  );
+  ).catch(function (error) {
+    console.log(error);
+  });
 });
 
 self.addEventListener("fetch", (event) => {
