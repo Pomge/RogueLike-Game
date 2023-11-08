@@ -6,7 +6,7 @@
 //    entity - сущность
 //    isPlayer - совершается ли передвижение игроком
 // }
-function moveEntity(map, direction, entity, isPlayer) {
+function moveEntity(map, direction, entity) {
   const { indexDiff, jndexDiff } = getIndexJndex(direction);
 
   const entity_i = entity.i;
@@ -17,7 +17,7 @@ function moveEntity(map, direction, entity, isPlayer) {
 
   let nextCell = map.gameZone[finalIndex][finalJndex];
 
-  if (isPlayer) {
+  if (entity.__proto__ === Player.prototype) {
     entity.changeDirection(direction);
     if (nextCell.__proto__ === Potion.prototype) {
       entity.drinkPotion(nextCell);
@@ -50,7 +50,7 @@ function moveEnemies(map, enemies, player) {
   for (let i = 0; i < enemies.length; i += 1) {
     const enemy = enemies[i];
     const direction = enemy.step(map, player);
-    moveEntity(map, direction, enemy, false);
+    moveEntity(map, direction, enemy);
   }
 }
 
@@ -105,7 +105,7 @@ const gameStep = (map, playerAction) => {
   moveEnemies(map, enemies, player);
 
   if (playerAction !== Action.ATTACK) {
-    moveEntity(map, playerAction, player, true);
+    moveEntity(map, playerAction, player);
   }
 
   calculateAttacks(map, player, enemies, playerAction === Action.ATTACK);
