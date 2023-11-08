@@ -110,17 +110,20 @@ body {
     animation: pulse 4s linear infinite;
 }
 
-.player.health {
-    background-color: #00ff00;
+.health {
     height: 3px;
 }
 
-.enemy.health {
+.player .health {
+    background-color: #00ff00;
+}
+
+.enemy .health {
     background-color: #ff0000;
-    height: 3px;
 }
 
 .healthPoint {
+    display: none;
     width: 100%;
     font-size: 12px;
     font-style: italic;
@@ -134,6 +137,10 @@ body {
     user-select: none;
     position: absolute;
     top: -12px;
+}
+
+.player:hover .healthPoint, .enemy:hover .healthPoint {
+    display: block;
 }
 
 @keyframes pulse {

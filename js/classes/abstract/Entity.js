@@ -9,17 +9,17 @@ function Entity(i, j, health, power) {
 Entity.prototype.__proto__ = Tile.prototype;
 
 Entity.prototype.draw = function (cell) {
-  const entity = this;
-
   this.mirrorFlip(cell);
-  cell.hover(
-    function () {
-      entity.drawHealthPoints(cell);
-    },
-    function () {
-      entity.removeHealthPoints(cell);
-    }
-  );
+};
+
+Entity.prototype.drawHealthBar = function (cell) {
+  const healthPercent = Math.ceil((this.health / this.maxHealth) * 100);
+  const healthBar = $("<div></div>");
+
+  healthBar.attr("class", "health");
+  healthBar.css("width", healthPercent + "%");
+
+  cell.append(healthBar);
 };
 
 Entity.prototype.drawHealthPoints = function (cell) {

@@ -9,16 +9,7 @@ Player.prototype.draw = function (cell) {
 
   cell.addClass("player");
   this.drawHealthBar(cell);
-};
-
-Player.prototype.drawHealthBar = function (cell) {
-  const healthPercent = Math.ceil((this.health / this.maxHealth) * 100);
-  const healthBar = $("<div></div>");
-
-  healthBar.attr("class", "player health");
-  healthBar.css("width", healthPercent + "%");
-
-  cell.append(healthBar);
+  this.drawHealthPoints(cell);
 };
 
 Player.prototype.drinkPotion = function (potion) {
