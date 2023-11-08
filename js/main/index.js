@@ -92,8 +92,22 @@ window.addEventListener("resize", (event) => {
   draw();
 });
 
+const registerServiceWorker = async () => {
+  if ("serviceWorker" in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register(
+        "../js/serviceWorker.js"
+      );
+    } catch (error) {
+      console.error(`Service Worker registration failed with ${error}`);
+    }
+  }
+};
+
 // Функция-инициализатор
-window.addEventListener("load", (event) => {
+window.addEventListener("load", async (event) => {
+  await registerServiceWorker();
+
   const initData = Settings;
   map = gameGenerator(initData);
   window.dispatchEvent(new Event("resize"));
