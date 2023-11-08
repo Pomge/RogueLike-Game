@@ -60,10 +60,9 @@ const assetsUrls = [
 ];
 
 async function addResourcesToCache(resources) {
-  console.log(resources);
   const cache = await caches.open(staticCacheName);
   await cache.addAll(resources).catch(function (error) {
-    console.log(error);
+    console.error(`Service Worker failed add resources to cache with ${error}`);
   });
 }
 
@@ -83,7 +82,7 @@ self.addEventListener("activate", async (event) => {
       .filter((cacheName) => cacheName !== staticCacheName)
       .map((cacheName) => caches.delete(cacheName))
   ).catch(function (error) {
-    console.log(error);
+    console.error(`Service Worker failed to remove old caches with ${error}`);
   });
 });
 
