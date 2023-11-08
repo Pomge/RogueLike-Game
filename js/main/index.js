@@ -96,7 +96,7 @@ const registerServiceWorker = async () => {
   if ("serviceWorker" in navigator) {
     try {
       const registration = await navigator.serviceWorker.register(
-        "../js/serviceWorker.js"
+        "./js/serviceWorker.js"
       );
     } catch (error) {
       console.error(`Service Worker registration failed with ${error}`);
