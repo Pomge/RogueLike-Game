@@ -31,7 +31,6 @@
   "lang": "ru-RU",
   "name": "RogueLike-Game",
   "short_name": "RL-G",
-  "start_url": "/RogueLike-Game",
-  "description": "RogueLike-Game on JavaScript using jQuery",
-  "id": "/RogueLike-Game"
+  "start_url": ".",
+  "description": "RogueLike-Game on JavaScript using jQuery"
 }

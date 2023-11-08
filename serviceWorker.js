@@ -1,6 +1,8 @@
 const staticCacheName = "rogue-like-static";
 
 const assetsUrls = [
+  "./",
+
   "./public/static/images/webp/background.webp",
   "./public/static/images/png/background.png",
   "./public/static/images/jpeg/background.jpg",
