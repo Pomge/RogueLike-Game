@@ -19,12 +19,9 @@ Enemy.prototype.draw = function (cell) {
 Enemy.prototype.drawHealthBar = function (cell) {
   const healthPercent = Math.ceil((this.health / this.maxHealth) * 100);
   const healthBar = $("<div></div>");
+
   healthBar.attr("class", "enemy health");
   healthBar.css("width", healthPercent + "%");
 
-  const healthPoint = $(`<p>${this.health} HP</p>`);
-  healthPoint.attr("class", "healthPoint");
-
-  cell.append(healthPoint);
   cell.append(healthBar);
 };
