@@ -61,7 +61,9 @@ const assetsUrls = [
 
 async function addResourcesToCache(resources) {
   const cache = await caches.open(staticCacheName);
-  await cache.addAll(resources);
+  await cache.addAll(resources).catch(function (error) {
+    console.log(error);
+  });
 }
 
 async function cacheFirst(request) {
