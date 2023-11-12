@@ -7,7 +7,7 @@ function Enemy(i, j, health, power, moveType) {
 Enemy.prototype.__proto__ = Entity.prototype;
 
 Enemy.prototype.draw = function (cell) {
-  this.__proto__.__proto__.__proto__.draw.call(this, cell);
+  Entity.prototype.draw.call(this, cell);
   cell.addClass("enemy");
   this.drawHealthBar(cell);
   this.drawHealthPoints(cell);

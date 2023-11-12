@@ -5,6 +5,7 @@ function Player(i, j, health, power) {
 Player.prototype.__proto__ = Entity.prototype;
 
 Player.prototype.draw = function (cell) {
+  Entity.prototype.draw.call(this, cell);
   this.__proto__.__proto__.draw.call(this, cell);
 
   cell.addClass("player");
