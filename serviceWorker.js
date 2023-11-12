@@ -1,4 +1,4 @@
-const staticCacheName = "rogue-like-static";
+const staticCacheName = "rogue-like-static-v.19:25_12.11.2023";
 
 const assetsUrls = [
   "./",
